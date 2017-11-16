@@ -3,19 +3,18 @@
  let http = require('http');
 
  http.createServer((request, response) => {
- // 取得 node.js 的 fs 模組
- let fs = require('fs')
-
- fs.readFile('../htdocs/index.html', (err, data) => {
+ // 傳送 HTTP header
+ // HTTP Status: 200 : OK
+ // Content Type: text/plain
  response.writeHead(200, {
- 'Content-Type': 'text/html'
+ 'Content-Type': 'text/plain'
  });
 
- response.write(data);
+ // 傳送回應內容。
+ response.end('Hello World!\n');
 
- response.end();
- });
+ console.log('request.headers: \n', request.headers)
  }).listen(8088);
 
  // log message to Console
- console.log(' 伺服器啟動，連線 url: http://127.0.0.1:8088/');
+ console.log(' 伺服器啓動，連線 url: http://127.0.0.1:8088/');
