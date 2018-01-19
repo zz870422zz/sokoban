@@ -1,7 +1,7 @@
 /**
  *  @file       index.js
  *  @brief      The entry file of Sokoban.
- *  @author     Yiwei Chiao (ywchiao@gmail.com)
+ *  @author     Lan Yishiuan (blueyi1103@gmail.com)
  *  @date       11/17/2017 created.
  *  @date       01/05/2018 last modified.
  *  @version    0.1.0
@@ -436,22 +436,9 @@ let prototypeGameState = {
     this.level[y] = replaceAt(this.level[y], x, SOKOBAN.MAN_ON_GOAL);
 
     return this;
-  },
+  }
+};
 
-  gamemd: function(){
-      var won = true,i,j;
-      for (var i = 0; i<this.level.length; i++){
-      for (var j = 0; j<this.level[i].length; j++){
-        if (this.level[i][j] == SOKOBAN.GOAL || this .level[i][j] == SOKOBAN.BOX){
-          win = false;
-        }
-      }
-    }
-    if (wn){
-      alert("恭喜你過關拉!");
-      }
-    }
-  };
 /**
  * 繪出盤面上的格線
  *
@@ -576,11 +563,21 @@ let sokoban = {
    */
   update: function (e) {
     this.move(e);
-    this.gamemd();
     this.paint();
 
+    var boxgoal = 0;
+    var nogoal = 1;
 
+    for(var y=0; y<this.level.length; y++){
+      for(var x=0; x<this.level.length; x++){
+        if(this.level[y].charAt(x)== SOKOBAN.BOX_ON_GOAL ) boxgoal=1;
+        if(this.level[y].charAt(x)== SOKOBAN.GOAL ||
+            this.level[y].charAt(x)== SOKOBAN.MAN_ON_GOAL ) nogoal=0;
+      }
+    }
 
+    if(boxgoal && nogoal)
+      alert("You Win!!");
 
   },
 };
