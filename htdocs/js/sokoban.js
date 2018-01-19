@@ -1,12 +1,12 @@
 /**
  *  @file       index.js
  *  @brief      The entry file of Sokoban.
- *  @author     Lan Yishiuan (blueyi1103@gmail.com)
+ *  @author     zz870422zz (zz870422zz@gmail.com)
  *  @date       11/17/2017 created.
  *  @date       01/05/2018 last modified.
  *  @version    0.1.0
  *  @since      0.1.0
- *  @copyright  MIT, © 2017-2018 Yiwei Chiao
+ *  @copyright  MIT, © 2017-2018 zz870422zz
  *  @details
  *
  *  The entry file of Sokoban.
@@ -565,19 +565,19 @@ let sokoban = {
     this.move(e);
     this.paint();
 
-    var boxgoal = 0;
-    var nogoal = 1;
+    var boxwin = 0;
+    var no = 1;
 
     for(var y=0; y<this.level.length; y++){
       for(var x=0; x<this.level.length; x++){
-        if(this.level[y].charAt(x)== SOKOBAN.BOX_ON_GOAL ) boxgoal=1;
+        if(this.level[y].charAt(x)== SOKOBAN.BOX_ON_GOAL ) boxwin=1;
         if(this.level[y].charAt(x)== SOKOBAN.GOAL ||
-            this.level[y].charAt(x)== SOKOBAN.MAN_ON_GOAL ) nogoal=0;
+            this.level[y].charAt(x)== SOKOBAN.MAN_ON_GOAL ) no=0;
       }
     }
 
-    if(boxgoal && nogoal)
-      alert("You Win!!");
+    if(boxwin && no)
+      alert("恭喜你獲得三學分!");
 
   },
 };
